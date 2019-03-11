@@ -20,3 +20,4 @@ transform = new_matrix()
 # print_matrix( make_rotZ(math.pi/4) )
 
 parse_file( 'script', edges, transform, screen, color )
+#parse_file( 'huh.txt', edges, transform, screen, color )
