@@ -9,12 +9,12 @@ The file follows the following format:
      Any command that requires arguments must have those arguments in the second line.
      The commands are as follows:
 
-	 circle: add a circle to the edge matrix - 
-	         takes 4 arguments (cx, cy, cz, r)
-	 hermite: add a hermite curve to the edge matrix -
-	          takes 8 arguments (x0, y0, x1, y1, rx0, ry0, rx1, ry1)
-	 bezier: add a bezier curve to the edge matrix -
-	         takes 8 arguments (x0, y0, x1, y1, x2, y2, x3, y3)
+     circle: add a circle to the edge matrix - 
+             takes 4 arguments (cx, cy, cz, r)
+     hermite: add a hermite curve to the edge matrix -
+              takes 8 arguments (x0, y0, x1, y1, rx0, ry0, rx1, ry1)
+     bezier: add a bezier curve to the edge matrix -
+             takes 8 arguments (x0, y0, x1, y1, x2, y2, x3, y3)
 
 
          line: add a line to the edge matrix -
@@ -101,4 +101,11 @@ def parse_file( fname, edges, transform, screen, color ):
             else:
                 save_extension(screen, args[0])
             
+        elif line == 'circle':
+            add_circle(edges, args[0],args[1],args[2],args[3],.02)
+            
+        elif line == 'hermite':
+            add_curve(edges,args[0],args[1],args[2],args[3],args[4,args[5],args[6],args[7],.02,'hermite')
+        elif line == 'bezier':
+            add_curve(edges,args[0],args[1],args[2],args[3],args[4,args[5],args[6],args[7],.02,'bezier')
         c+= 1

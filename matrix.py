@@ -17,13 +17,13 @@ def make_hermite():
 
 def generate_curve_coefs( p0, p1, p2, p3, t ):
     Points = [[p0,p1,p2,p3]]
-	inverse = []
-	if t == 'hermite':
-		inverse = make_hermite()
-	if t == 'bezier':
-		inverse = make_bezier()
-	matrix_mult(inverse,Points)
-	return Points
+    inverse = []
+    if t == 'hermite':
+        inverse = make_hermite()
+    if t == 'bezier':
+        inverse = make_bezier()
+    matrix_mult(inverse,Points)
+    return Points
 
 def make_translate( x, y, z ):
     t = new_matrix()
