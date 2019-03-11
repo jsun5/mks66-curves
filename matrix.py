@@ -9,46 +9,21 @@ z0  z1  ... zn
 """
 import math
 
-inverse = [[2,-3,0,1],[-2,3,0,0],[1,-2,1,0],[1,-1,0,0]]
+def make_bezier():
+    return [[-1,3,-3,1],[3,-6,3,0],[-3,3,0,0],[1,0,0,0]]
 
-def make_bezier(points, x0, y0, x1, y1, x2, y2, x3, y3):
-    pass
-
-def make_hermite(points, x0, y0, x1, y1, rx0, ry0, rx1, ry1):
-    xPoints = [[x0,x1,rx0,rx1]]
-	matrix_mult(inverse,xPoints)
-	xa=xPoints[0][0]
-	xb=xPoints[0][1]
-	xc=xPoints[0][2]
-	xd=xPoints[0][3]
-	
-	yPoints = [[y0,y1,ry0,ry1]]
-	matrix_mult(inverse,yPoints)
-	ya=yPoints[0][0]
-	yb=yPoints[0][1]
-	yc=yPoints[0][2]
-	yd=yPoints[0][3]
-	
-	step = 0.2
-	interval = 0
-	while interval <= 1:
-		if interval == 0 or interval == 1:
-			x = xa*(math.pow(interval,3)+xb*(math.pow(interval,2)+xc*interval+xd
-			y = ya*(math.pow(interval,3)+yb*(math.pow(interval,2)+yc*interval+yd
-			add_point(points,x,y,0)
-			interval+=step
-		else:
-			x = xa*(math.pow(interval,3)+xb*(math.pow(interval,2)+xc*interval+xd
-			y = ya*(math.pow(interval,3)+yb*(math.pow(interval,2)+yc*interval+yd
-			add_point(points,x,y,0)
-			add_point(points,x,y,0)
-			interval+=step
-	
-	
+def make_hermite():
+    return [[2,-3,0,1],[-2,3,0,0],[1,-2,1,0],[1,-1,0,0]]
 
 def generate_curve_coefs( p0, p1, p2, p3, t ):
-    pass
-
+    Points = [[p0,p1,p2,p3]]
+	inverse = []
+	if t == 'hermite':
+		inverse = make_hermite()
+	if t == 'bezier':
+		inverse = make_bezier()
+	matrix_mult(inverse,Points)
+	return Points
 
 def make_translate( x, y, z ):
     t = new_matrix()
