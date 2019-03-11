@@ -3,19 +3,18 @@ from matrix import *
 
 
 def add_circle( points, cx, cy, cz, r, step ):
-	x = cx + r
-	y = cz 
-	add_point(points,matrix,x,y,cz)
-	interval = step
+	interval = 0
     while interval <= 1:
+		if interval == 0 or interval == 1:
+			x = cx + r*math.cos(2*math.pi*interval)
+			y = cy + r*math.sin(2*math.pi*interval)
+			add_point(points,matrix,x,y,cz)
+			interval += step
 		x = cx + r*math.cos(2*math.pi*interval)
 		y = cy + r*math.sin(2*math.pi*interval)
 		add_point(points,matrix,x,y,cz)
 		add_point(points,matrix,x,y,cz)
 		interval += step
-	x = cx + r*math.cos(2*math.pi*interval)
-	y = cy + r*math.sin(2*math.pi*interval)
-	add_point(points,matrix,x,y,cz)
 
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
